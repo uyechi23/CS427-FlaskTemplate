@@ -9,7 +9,7 @@ Surj Patel (patels@up.edu)
 This is a simple Flask app with the minimum required functionality for an Internet of Things (IoT) project. This includes Flask routing, URL parameters, 
 Jinja2 HTML templating, and a simple local database using the sqlite3 Python library.
 
-## Setup (Windows)
+## Setup
 
 ### Prerequisites
 Python and pip installed on device.
@@ -18,9 +18,9 @@ Python and pip installed on device.
 This Flask application will be run on a computer - it will be the server that will host the web application. Any device connected to the same Wi-Fi network can 
 connect to the web application, which includes other laptops, phones, and IoT devices.
 
-First, clone this repository. You may need to set up SSH on your local before doing this:
+First, clone this repository:
 ```
-git clone git@github.com:uyechi23/CS427-FlaskTemplate.git
+git clone https://github.com/uyechi23/CS427-FlaskTemplate.git
 ```
 
 ### Setting up a Virtual Environment
