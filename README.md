@@ -30,8 +30,8 @@ and assume you already have Python and pip installed.
 ```
 python3 -m pip install --user virtualenv
 python3 -m virtualenv env
-pip install -r requirements.txt
 env\Scripts\activate
+pip install -r requirements.txt
 ```
 
 ### Running and Accessing the Flask App
