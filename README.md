@@ -44,3 +44,9 @@ Your Flask app should now be running on a certain socket - you can use a smartph
 and port number into a web browser (i.e., 10.17.154.215:5000). Access routes in the Flask app by adding onto the end of the socket (i.e., 10.17.154.215:5000/route1).
 
 To stop the Flask app, either exit the terminal or press CTRL-C.
+
+## Working with ESP32/Arduino
+
+### Supplementary ESP32 Libraries
+Visit https://github.com/uyechi23/CS427-IoTLibraries to find the ESP32 library files that can be used with this Flask app. Use the wifi_client library to connect to
+the Flask app.
