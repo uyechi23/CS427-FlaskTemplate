@@ -11,18 +11,13 @@ when writing HTML documents that have constantly changing data, such as reading 
 from a database. An example of this is included in the Flask Demo, under the "templates"
 folder.
 
-Use a virtual environment and pip to install the necessary packages:
-python3 -m venv env
-env\Scripts\activate
-pip install -r requirements.txt
-
 @Authors: Surj Patel, Jake Uyechi
 @Date: December 6, 2022
 """
 
 """ Importing Libraries
 
-flask - the basis of Flask; includes the necessary libraries and modules for a flask app
+flask - the basis of Flask; includes the necessary libraries and modules for a Flask app
 sqlite3 - a simplified database that integrates with python
 """
 from flask import Flask, render_template
@@ -36,14 +31,14 @@ app = Flask(__name__)
 
 """ Routes
 
-Routes are the center of any web application; Flask has several utilities to help you
-build your webpage for many different IoT applications
+Routes are the center of your web application; Flask has several utilities to help you
+build your webpage for many different IoT applications. 
 
 Flask URL Parameters
 
 Flask can use data from a URL to render a webpage. You can write this in your routes
-by using <angle brackets>. This is useful when trying to store
-data into a database, or using it to render different types of webpages.
+by using <angle brackets>. Your IoT device can "visit" one of these routes with different
+URL parameters, and the route can take that value and add it to a database (for example).
 """
 
 # define a simple home route
@@ -124,4 +119,7 @@ def addtodb(name,value):
     res = cur.execute(query).fetchall()
     
     # render an HTML page using Jinja2
+    # the first parameter is the .html file that will be rendered when the user visits the route
+    # the second parameter is the context (or set of variables) that Jinja can use. You'll see
+    # more of how the context is used by Jinja.
     return render_template('database.html', data=res)
