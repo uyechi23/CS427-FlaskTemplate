@@ -47,7 +47,7 @@ flask run -h 0.0.0.0 -p 5000
 ```
 
 Your Flask app should now be running on a certain socket - you can use a smartphone or other device to verify the Flask app is running by typing the IP address
-and port number into a web browser (i.e., 10.17.154.215:5000). Access routes in the Flask app by adding onto the end of the socket (i.e., 10.17.154.215:5000/route1).
+and port number into a web browser (i.e., 10.17.154.215:5000). Access routes in the Flask app by adding onto the end of the socket (i.e., 10.17.154.215:5000/insert/route/here).
 
 To stop the Flask app, either exit the terminal or press CTRL-C.
 
