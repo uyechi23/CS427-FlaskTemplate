@@ -34,8 +34,8 @@ We will need to set up a virtual environment - this allows us to easily set up a
 through pip on every computer. The dependencies for the Flask application are listed in requirements.txt. The following commands are for Windows Command Prompt
 and assume you already have Python and pip installed.
 ```
-python3 -m pip install --user virtualenv
-python3 -m virtualenv env
+py -m pip install --user virtualenv
+py -m virtualenv env
 env\Scripts\activate
 pip install -r requirements.txt
 ```
