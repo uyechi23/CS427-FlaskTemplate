@@ -19,9 +19,11 @@ folder.
 
 flask - the basis of Flask; includes the necessary libraries and modules for a Flask app
 sqlite3 - a simplified database that integrates with python
+datetime - a basic library with utilities to manipulate dates and times
 """
 from flask import Flask, render_template
 import sqlite3
+from datetime import datetime
 
 """ Initializing your Flask App
 
@@ -123,3 +125,61 @@ def addtodb(name,value):
     # the second parameter is the context (or set of variables) that Jinja can use. You'll see
     # more of how the context is used by Jinja.
     return render_template('database.html', data=res)
+
+""" Basic IoT Demonstration Route
+
+This route demonstrates how a typical IoT device might send data over to a web application route.
+It includes the use of the CS427-IoTLibraries package, so be sure to visit the README.md for this
+Flask template to find the repository containing the ESP32 sample code.
+
+The IoT sample device is a basic button that is set to access this route (/iotdemo). The LCD screen
+should display the time passed since the button was last pushed (in seconds).
+
+The Flask app is set to calculate the difference in time between button pushes using a database,
+but for the sake of limiting the size of the database file, the table for this route will only
+contain one row for each device that has accessed the /iotdemo route.
+"""
+@app.route("/iotdemo/<string:macaddress>")
+def iotdemo(macaddress):
+    # current time
+    current_time = datetime.now()
+    
+    # set up sqlite and database (if it doesn't already exist)
+    con = sqlite3.connect('database.sqlite3')
+    cur = con.cursor()
+    query = """
+        CREATE TABLE IF NOT EXISTS iotsample (
+            mac TEXT PRIMARY KEY NOT NULL,
+            timestamp TIMESTAMP NOT NULL
+        )
+    """
+    cur.execute(query)
+    
+    # check how many entries the database has; this should only execute when the database
+    # row is first created for a particular MAC address. If there are no entries, make a dummy entry.
+    query = """SELECT count(*) FROM iotsample WHERE mac = ?"""
+    res = cur.execute(query, (macaddress,)).fetchone()
+    if res[0] == 0:
+        query = """INSERT INTO iotsample (mac, timestamp) VALUES (?, ?)"""
+        cur.execute(query, (macaddress, current_time))
+        
+    # retrieve the last value in the table
+    query = """SELECT * FROM iotsample WHERE mac = (?)"""
+    previous_time = cur.execute(query, (macaddress,)).fetchone()
+    
+    # replace the current timestamp the database
+    query = """REPLACE INTO iotsample (mac, timestamp) VALUES (?, ?)"""
+    cur.execute(query, (macaddress, current_time))
+    
+    # commit to the database - this "saves" your changes
+    con.commit()
+    
+    # calculate the time difference between the previous timestamp and now utilizing datetime library
+    # the timestamp got converted into a string when it was retrieved from the database, so we use
+    # datetime.strptime() to convert it back into a datetime object.
+    time_difference = current_time - datetime.strptime(previous_time[1], "%Y-%m-%d %H:%M:%S.%f")
+    seconds_difference = round(time_difference.total_seconds())
+    
+    # return a simple text-based response
+    return f'{seconds_difference}'
+    
