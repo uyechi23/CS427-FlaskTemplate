@@ -10,10 +10,10 @@ Jinja2 HTML templating, and a simple local database using the sqlite3 Python lib
 the wifi_client library that is compatible with this Flask template.
 
 ### **Related**
-Supplementary CS427 ESP32 IoT Libraries - https://github.com/uyechi23/CS427-IoTLibraries
-Documentation for SQLite3 - https://docs.python.org/3/library/sqlite3.html
-Alternative SQLAlchemy Database for PythonAnywhere - https://blog.pythonanywhere.com/121/
-Jinja Templating Primer - https://realpython.com/primer-on-jinja-templating/
+Supplementary CS427 ESP32 IoT Libraries - https://github.com/uyechi23/CS427-IoTLibraries \
+Documentation for SQLite3 - https://docs.python.org/3/library/sqlite3.html \
+Alternative SQLAlchemy Database for PythonAnywhere - https://blog.pythonanywhere.com/121/ \
+Jinja Templating Primer - https://realpython.com/primer-on-jinja-templating/ 
 
 <br>
 
@@ -27,8 +27,8 @@ Jinja Templating Primer - https://realpython.com/primer-on-jinja-templating/
 This Flask application will be run on a computer - it will be the server that will host the web application. Any device connected to the same Wi-Fi network can 
 connect to the web application, which includes other laptops, phones, and IoT devices.
 
-First, open the Windows Command Prompt. Run the set of following commands to clone the git repository into a local folder (this can be wherever you want to
-save your Flask application, but for this example, I chose my desktop):
+First, open the Windows Command Prompt. Substitute [username] with your own username. Run the set of following commands to clone the git repository into a local
+folder (this can be wherever you want to save your Flask application, but for this example, I chose my desktop):
 ```
 C:\Users\[username]> chdir C:\Users\[username]\Desktop
 C:\Users\[username]\Desktop> git clone https://github.com/uyechi23/CS427-FlaskTemplate.git
@@ -54,12 +54,12 @@ C:\Users\[username]\Desktop\CS427-FlaskTemplate> git push -u origin main
 ```
 
 NOTE: GitHub discontinued logging in through HTTPS username/password combinations back in August 2021.
-To get around this issue, view the article below to set up a personal access token to be able to push to your GitHub repository:
+To get around this issue, view the article below to set up a personal access token to be able to push to your GitHub repository: \
 https://docs.github.com/en/enterprise-server@3.4/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token
 
-Alternatively, view these articles to create an SSH key and connect it to your GitHub account:
-https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent
-https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account
+Alternatively, view these articles to create an SSH key and connect it to your GitHub account: \
+https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent \
+https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account 
 
 ### **Setting up a Virtual Environment**
 We will need to set up a virtual environment - this allows us to easily set up annd run a lightweight application without needing to always install packages
