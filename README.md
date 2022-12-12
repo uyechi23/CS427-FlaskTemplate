@@ -144,7 +144,7 @@ and assume you already have Python and pip installed. Once the virtual environme
 ### **Running and Accessing the Flask App**
 Finally, run the Flask app using the following command:
 ```
-flask run -h 0.0.0.0 -p 5000
+~/Desktop/CS427-FlaskTemplate$ flask run -h 0.0.0.0 -p 5000
 ```
 
 Your Flask app should now be running on a certain socket - you can use a smartphone or other device to verify the Flask app is running by typing the IP address
