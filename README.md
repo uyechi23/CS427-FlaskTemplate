@@ -11,15 +11,17 @@ the wifi_client library that is compatible with this Flask template.
 
 ### **Related**
 Supplementary CS427 ESP32 IoT Libraries - https://github.com/uyechi23/CS427-IoTLibraries
+Documentation for SQLite3 - https://docs.python.org/3/library/sqlite3.html
+Alternative SQLAlchemy Database for PythonAnywhere - https://blog.pythonanywhere.com/121/
+Jinja Templating Primer - https://realpython.com/primer-on-jinja-templating/
 
 <br>
 
 ## **Setup - Windows**
 
 ### **Prerequisites**
-- Python
-- pip
-- git
+- Python (https://www.python.org/downloads/)
+- git (https://git-scm.com/download/win)
 
 ### **Cloning the repository**
 This Flask application will be run on a computer - it will be the server that will host the web application. Any device connected to the same Wi-Fi network can 
@@ -40,8 +42,8 @@ To remove the git repository, run the following command:
 C:\Users\[username]\Desktop\CS427-FlaskTemplate> rmdir /s .git
 ```
 
-Once the original .git repository is deleted, you can add it to your own GitHub repository (note that you will need to create a completely empty directory first,
-then retrieve the address of the repository):
+Once the original .git repository is deleted, you can add it to your own GitHub repository (note that you will need to create a completely empty directory
+in GitHub first, then retrieve the address of the repository):
 ```
 C:\Users\[username]\Desktop\CS427-FlaskTemplate> git init
 C:\Users\[username]\Desktop\CS427-FlaskTemplate> git add .
@@ -55,15 +57,19 @@ NOTE: GitHub discontinued logging in through HTTPS username/password combination
 To get around this issue, view the article below to set up a personal access token to be able to push to your GitHub repository:
 https://docs.github.com/en/enterprise-server@3.4/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token
 
+Alternatively, view these articles to create an SSH key and connect it to your GitHub account:
+https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent
+https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account
+
 ### **Setting up a Virtual Environment**
 We will need to set up a virtual environment - this allows us to easily set up annd run a lightweight application without needing to always install packages
 through pip on every computer. The dependencies for the Flask application are listed in requirements.txt. The following commands are for Windows Command Prompt
-and assume you already have Python and pip installed.
+and assume you already have Python and pip installed. Once the virtual environment is activated, you should see an (env) before the directory on the command prompt.
 ```
 py -m pip install --user virtualenv
 py -m virtualenv env
 env\Scripts\activate
-pip install -r requirements.txt
+py -m pip install -r requirements.txt
 ```
 
 ### **Running and Accessing the Flask App**
@@ -82,4 +88,4 @@ To stop the Flask app, either exit the terminal or press CTRL-C.
 
 ### **Supplementary ESP32 Libraries**
 Visit https://github.com/uyechi23/CS427-IoTLibraries to find the ESP32 library files that can be used with this Flask app. Use the wifi_client library to connect to
-the Flask app.
+the Flask app, or the iot_demo library to see how the ESP32 interacts with the SQLite database through Flask.

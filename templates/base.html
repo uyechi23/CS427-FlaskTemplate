@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+
+<!--
+    This is a "base template" - when making HTML pages for a website, you might use
+    a lot of the same formatting or data. For example, the title of this web app
+    might always be "Flask Demo", so we include it in the base template. However,
+    the body (or content) of the page will differ depending on the route.
+
+    This is where Jinja2's "Template Inheritance" comes into play - creating a
+    "block" allows you to set aside a block of HTML code that will change depending
+    on which HTML page you render.
+
+    Visit the "Extend Child Templates" section in the Jinja2 Primer
+    (https://realpython.com/primer-on-jinja-templating/) to read more.
+-->
+
+<head>
+    <title>Flask Demo</title>
+</head>
+
+<body>
+    {% block content %}
+
+    {% endblock content %}
+</body>

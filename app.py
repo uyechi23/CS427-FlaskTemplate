@@ -63,13 +63,28 @@ def integerinput(data):
 
 """ Interacting with a database
 
+SQL (Structured Query Language) is a relatively common way to interact with databases.
+A basic database is stored in a single file (in this example, we're using sqlite3,
+so our database file will be database.sqlite3). Within the file are several "tables",
+which essentially stores one set of data. This set of data includes one set of 
+"columns", or categories of data. A table can have any number of "rows", which is
+usually a single data point.
+
+For example, a database for an online shop might be stored in a file called "shop.db".
+One table within that database might store data for their stock of products, which
+might be called "products". The columns for this table would likely include
+"id", "name", "description", "price", "size", and more. Each different product would
+have one row.
+
 sqlite3 is a python package that allows you to interface with SQL databases directly
 from a python script. While it's not the best option for databases, it's the easiest
-to set up and configure for starters. For the example application, we'll take some
-data in a route and pass it to a database.
+to set up and configure for starters. For thi example, we'll take some data in the
+URL parameters and pass it to a database.
+
+Refer to this link for the documentation: https://docs.python.org/3/library/sqlite3.html
 
 If you're using VSCode, there is a helpful extension called "SQLite Viewer" that
-lets you easily see the contents of a database
+lets you easily see the contents of a database.
 
 IMPORTANT: This will not work for PythonAnywhere; they have their own way of setting
 up databases using SQLAlchemy (similar, but requires more Python code). Link is here:
@@ -124,7 +139,7 @@ def addtodb(name,value):
     # the first parameter is the .html file that will be rendered when the user visits the route
     # the second parameter is the context (or set of variables) that Jinja can use. You'll see
     # more of how the context is used by Jinja.
-    return render_template('database.html', data=res)
+    return render_template('uservalues.html', data=res)
 
 """ Basic IoT Demonstration Route
 
@@ -132,19 +147,20 @@ This route demonstrates how a typical IoT device might send data over to a web a
 It includes the use of the CS427-IoTLibraries package, so be sure to visit the README.md for this
 Flask template to find the repository containing the ESP32 sample code.
 
-The IoT sample device is a basic button that is set to access this route (/iotdemo). The LCD screen
-should display the time passed since the button was last pushed (in seconds).
+The IoT sample device is a basic button that is set to access this route (/iotdemo/<macaddress>).
+The LCD screen should display the time passed since the button was last pushed (in seconds).
 
 The Flask app is set to calculate the difference in time between button pushes using a database,
 but for the sake of limiting the size of the database file, the table for this route will only
-contain one row for each device that has accessed the /iotdemo route.
+contain one row for each device that has accessed the /iotdemo/<macaddress> route.
 """
 @app.route("/iotdemo/<string:macaddress>")
 def iotdemo(macaddress):
-    # current time
+    # retrieve the current time (essentially when the button was pressed)
     current_time = datetime.now()
     
-    # set up sqlite and database (if it doesn't already exist)
+    # connect to the sqlite database file
+    # also create the iotsample table in case it doesn't already exist
     con = sqlite3.connect('database.sqlite3')
     cur = con.cursor()
     query = """
