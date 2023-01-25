@@ -10,11 +10,21 @@
     the content block defined here.
 -->
 {% block content %}
-    <table>
+    {% if userCount and sumNums %}
+        <h1 align="center">
+            Number of Entries: {{userCount}}
+        </h1>
+        <h2 align="center">
+            Sum of Entries: {{sumNums}}
+        </h2>
+    {% endif %}
+    
+    <table align="center" border="1px" cellpadding="5px">
         <tr>
             <th>ID</th>
             <th>Name</th>
             <th>Value</th>
+            <th>Timestamp</th>
         </tr>
 
     <!--
@@ -30,6 +40,7 @@
             <th>{{row[0]}}</th>
             <th>{{row[1]}}</th>
             <th>{{row[2]}}</th>
+            <th>{{row[3]}}</th>
         </tr>
         {% endfor %}
 
