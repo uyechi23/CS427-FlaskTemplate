@@ -11,16 +11,16 @@
 -->
 {% block content %}
     {% if userCount and sumNums %}
-        <h1 align="center">
-            Number of Entries: {{userCount}}
-        </h1>
-        <h2 align="center">
-            Sum of Entries: {{sumNums}}
-        </h2>
+    <h1 align="center">
+        Number of Entries: {{userCount}}
+    </h1>
+    <h2 align="center">
+        Sum of Entries: {{sumNums}}
+    </h2>
     {% endif %}
     
-    <table align="center" border="1px" cellpadding="5px">
-        <tr>
+    <table id="usertable" align="center" border="1px" cellpadding="5px">
+        <tr id="tableheader">
             <th>ID</th>
             <th>Name</th>
             <th>Value</th>
@@ -35,7 +35,7 @@
         having to manually update the HTML document for each row of data.
     -->
 
-        {% for row in data %}
+    {% for row in data %}
         <tr>
             <th>{{row[0]}}</th>
             <th>{{row[1]}}</th>

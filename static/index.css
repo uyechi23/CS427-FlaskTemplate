@@ -1,0 +1,23 @@
+body {
+    background-color: #121212;
+    color: #FFFEEE;
+    font-family: 'Montserrat', sans-serif;
+    padding: 0% 5% 0% 5%;
+
+}
+
+#usertable {
+    background-color: #282828;
+    width: 100%;
+}
+
+#tableheader {
+    background-color: #BB86FC;
+    color: #121212;
+}
+
+body::-webkit-scrollbar { width: 0 !important }
+body {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
