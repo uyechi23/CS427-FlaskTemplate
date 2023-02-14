@@ -16,6 +16,14 @@
 
 <head>
     <title>Flask Demo</title>
+
+    <!--
+        You can add CSS stylesheets to an HTML document. Use double curly braces
+        along with the url_for() function, passing in 'static' along with the
+        filename of the CSS file to link. Note that there must be a "static"
+        folder in the same directory as the main application this HTML file is
+        rendered from.
+    -->
     <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
 
     <!--
