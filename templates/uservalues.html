@@ -10,12 +10,21 @@
     the content block defined here.
 -->
 {% block content %}
-    {% if userCount and sumNums %}
+    <!--
+        if statements can check if a variable is defined
+        for example, if you have two render_template() calls that use
+        different variables, those changes will be reflected in the
+        HTML elements that are rendered on the page.
+    -->
+    {% if userCount is defined and sumNums is defined %}
     <h1 align="center">
         Number of Entries: {{userCount}}
     </h1>
     <h2 align="center">
         Sum of Entries: {{sumNums}}
+    </h2>
+    <h2 align="center">
+        Average of Entries: {{ "%.3f"|format(sumNums/userCount|float) }}
     </h2>
     {% endif %}
     
